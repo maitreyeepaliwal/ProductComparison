@@ -8,7 +8,6 @@
 	transform: scale3d(0.9,0.9,1);
 }
 
-/* product grid */
 .grid {
 	margin: 0 auto;
 	padding: 4em 1em;
@@ -23,7 +22,6 @@
 	user-select: none;
 }
 
-/* if flexbox is supported, let's use it to lay out the products */
 .flexbox .grid {
 	display: -ms-flexbox;
 	display: -webkit-flex;
@@ -45,7 +43,6 @@
 	align-items: flex-start;
 }
 
-/* product */
 .product {
 	position: relative;
 	display: inline-block;
@@ -58,7 +55,7 @@
 }
 
 .product--selected {
-	box-shadow: 0 0 0 2px #5C5EDC;
+	box-shadow: 0 0 0 2px;
 }
 
 .flexbox .product {
@@ -68,13 +65,11 @@
 	flex: 0 0 16em;
 }
 
-/* product info */
 .product__info > span {
 	display: block;
 	padding: 1em 0;
 }
 
-/* since we'll be using the product info inside of the comparison, we'll hide the extra info for the grid view */
 .grid .extra {
 	display: none;
 }
@@ -85,6 +80,7 @@
 	max-width: 100%;
 	-webkit-transform-origin: 50% 100%;
 	transform-origin: 50% 100%;
+	height: 180px;
 }
 
 .product:hover .product__image {
@@ -92,7 +88,6 @@
 	animation: swing 0.6s forwards;	
 }
 
-/* https://daneden.github.io/animate.css/ */
 @-webkit-keyframes swing {
 	25% {
 		-webkit-transform: rotate3d(0, 0, 1, 6deg);
@@ -143,10 +138,6 @@
 	min-height: 3em;
 }
 
-.product__price {
-	font-weight: bold;
-	color: #797BED;
-}
 
 .action {
 	display: inline-block;
@@ -264,7 +255,7 @@
 }
 
 .action--compare-add {
-	color: #ddd;
+	color: orangered;
 	position: absolute;
 	top: 10px;
 	right: 5px;
@@ -274,7 +265,7 @@
 	opacity: 1;
 	top: 35px;
 	right: 10px;
-	color: #ddd;
+	color: goldenrod;
 	font-size: 75%;
 	letter-spacing: 0;
 	background: #2F3035;
@@ -438,10 +429,6 @@
 	min-height: 0;
 }
 
-.compare__item .product__price {
-	color: #CECECE;
-}
-
 .compare__item span[class^="product__"] {
 	display: block;
 	padding: 0.85em 0;
@@ -582,9 +569,9 @@
 		display: block;
 	}
 
-	.compare__item .product__year { border-bottom: 2px solid #2E294E; }
-	.compare__item .product__region { border-bottom: 2px solid #6D6FD2; }
-	.compare__item .product__varietal { border-bottom: 2px solid #4B5267; }
+	.compare__item .product__present { border-bottom: 2px solid #2E294E; }
+	.compare__item .product__advantages{ border-bottom: 2px solid #6D6FD2; }
+	.compare__item .product__disadvantages { border-bottom: 2px solid #4B5267; }
 	.compare__item .product__alcohol { border-bottom: 2px solid #3C3474; }
 
 	.action--close {
