@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+		<title> CompareIt</title>
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" href="css/demo.css" />
+		<link rel="stylesheet" type="text/css" href="css/component.css" />
+		<script src="js/modernizr.custom.js"></script>
+    <script src="/path/to/jquery.min.js"></script>
+<script src="/path/to/savestorage.js"></script>
+
+	</head>
+	<body>
+        <form method="post" id="myForm1" >
+            <input type = "text" name="title" plceholder="Form Name" id ="name" required/><br>
+            
+            <button onclick="save()">save</button>
+        </form>
+        <script>
+        $('#save').on('click', function(){
+          $('input[type="text"]').each(function(){    
+            var id = $(this).attr('id');
+            var value = $(this).val();
+            localStorage.setItem(id, value);
+          });   
+        });
+
+$('#load').on('click', function(){
+$('input[type="text"]').each(function(){    
+    var id = $(this).attr('id');
+    var value = localStorage.getItem(id);
+
+    $(this).val(value);
+
+}); 
+});
+      </script>
+
+        <h1><div id ="printtitle"></div></h1>
+        <h1>Enter Any four form fields for comparison</h1>
+        <form>
+            <input type = "name" name ="field1" placeholder="Field 1" required/><br>
+            <input type = "name" name ="field2" placeholder="Field 2" required/><br>
+            <input type = "name" name ="field3" placeholder="Field 3" required/><br>
+            <input type = "name" name ="field4" placeholder="Field 4" required /><br>
+
+        <div class="d-none" id="overlay" onclick="hide(event)">
+            <div id="table-scroll">
+        <table id="myTable" class="table table-bordered">
+            <tr>
+              <th>Name</th>
+              <th>Phone Number</th>
+              <th>Email address</th>
+              <th>Services provided</th>
+              <th>Postcodes</th>
+            </tr>
+            <tr>
+              <td>
+                <textarea name="Name" th:field="${Set.name}" id="name" style="resize: none; width: 100%;"></textarea>
+              </td>
+              <td>
+                <textarea name="Phone Number" th:field="${Set.phone}" id="phone" style="resize: none; width: 100%;"></textarea>
+              </td>
+              <td>
+                <textarea name="Email" th:field="${Set.email}" id="email" style="resize: none; width: 100%;"></textarea>
+              </td>
+              <td>
+                <textarea name="Service" th:field="${Set.service}" id="service" style="resize: none; width: 100%;"></textarea>
+              </td>
+              <td>
+                <textarea name="Sub Service" th:field="${Set.subservice}" id="subservice" style="resize: none; width: 100%;"></textarea>
+              </td>
+            </tr>
+          </table>
+          </div>
+          </div>
+            <div class="set-form">
+              <input type="button" id="more_fields" onclick="add_fields();" value="Add another member +" style="color: blanchedalmond; background-color: black; border: white;" class="btn btn-info" />
+            </div><br>
+            <input type="submit" name="submit" value="Register" onclick="saveentries">
+            </form>
+        </body>
+        <script>
+            function add_fields() {
+    var table = document.getElementById("myTable");
+    var row = table.insertRow(-1).innerHTML = '<tr><td><textarea name ="Name" th: field = "${Set.name}" id="name" style = "resize: none; width:100%;"></textarea></td><td><textarea name="Phone Number" th: field = "${Set.phone}" id="phone" style="resize:none;width: 100%;"></textarea></td ><td><textarea name="Email" th: field = "${Set.email}" id="email" style="resize:none;width: 100%;"></textarea></td ><td><textarea name="Service" th: field = "${Set.service}" id="service" style="resize:none;width: 100%;"></textarea></td ><td><textarea name="Sub Service" th: field = "${Set.subservice}" id="subservice" style="resize:none;width: 100%;"></textarea></td ></tr>';
+    }
+
+    function saveentries() {
+    var f2 = document.getElementsByName("field2").value;
+    var f3 = document.getElementsByName("field3").value;
+    var f4 = document.getElementsByName("field4").value;
+    localStorage.setItem("field1", f1.val());
+    localStorage.setItem("field2", f2.val());
+    localStorage.setItem("field3", f3.val());
+    localStorage.setItem("field4", f4.val());
+    alert(input);
+}
+    
+        </script>
+        </html>
